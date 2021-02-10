@@ -18,3 +18,6 @@ H:\Dollar Maker\C#\Projekt-semestralny-programowanie-obiektowe\Projekt-semestral
 H:\Dollar Maker\C#\Projekt-semestralny-programowanie-obiektowe\Projekt-semestralny-programowanie-obiektowe\WyposazenieDlaSilowni\obj\Debug\WyposazenieDlaSilowni.csproj.CopyComplete
 H:\Dollar Maker\C#\Projekt-semestralny-programowanie-obiektowe\Projekt-semestralny-programowanie-obiektowe\WyposazenieDlaSilowni\obj\Debug\WyposazenieDlaSilowni.exe
 H:\Dollar Maker\C#\Projekt-semestralny-programowanie-obiektowe\Projekt-semestralny-programowanie-obiektowe\WyposazenieDlaSilowni\obj\Debug\WyposazenieDlaSilowni.pdb
+H:\Dollar Maker\C#\Projekt-semestralny-programowanie-obiektowe\Projekt-semestralny-programowanie-obiektowe\WyposazenieDlaSilowni\bin\Debug\Database1.mdf
+H:\Dollar Maker\C#\Projekt-semestralny-programowanie-obiektowe\Projekt-semestralny-programowanie-obiektowe\WyposazenieDlaSilowni\bin\Debug\Database1_log.ldf
+H:\Dollar Maker\C#\Projekt-semestralny-programowanie-obiektowe\Projekt-semestralny-programowanie-obiektowe\WyposazenieDlaSilowni\obj\Debug\WyposazenieDlaSilowni_Content.g.cs

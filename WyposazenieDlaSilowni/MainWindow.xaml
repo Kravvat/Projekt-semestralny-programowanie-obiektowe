@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WyposazenieDlaSilowni"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:Wyposazenie_dla_silowni_DataSet x:Key="wyposazenie_dla_silowni_DataSet"/>
+        <CollectionViewSource x:Key="klienciViewSource" Source="{Binding Klienci, Source={StaticResource wyposazenie_dla_silowni_DataSet}}"/>
+    </Window.Resources>
+    <Grid/>
 </Window>
