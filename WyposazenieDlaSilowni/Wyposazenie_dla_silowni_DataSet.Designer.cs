@@ -525,10 +525,10 @@ namespace WyposazenieDlaSilowni {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public KlienciRow AddKlienciRow(int ID, string Imie, string Nazwisko, string Miasto, PracownicyRow parentPracownicyRowByFK_Klienci_Pracownicy) {
+            public KlienciRow AddKlienciRow(string Imie, string Nazwisko, string Miasto, PracownicyRow parentPracownicyRowByFK_Klienci_Pracownicy) {
                 KlienciRow rowKlienciRow = ((KlienciRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ID,
+                        null,
                         Imie,
                         Nazwisko,
                         Miasto,
@@ -587,6 +587,8 @@ namespace WyposazenieDlaSilowni {
                 base.Columns.Add(this.columnObslugujacyPracownik);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = 1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
                 this.columnImie.AllowDBNull = false;
@@ -839,10 +841,10 @@ namespace WyposazenieDlaSilowni {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public PracownicyRow AddPracownicyRow(int ID, string Imie, string Nazwisko, int Wiek) {
+            public PracownicyRow AddPracownicyRow(string Imie, string Nazwisko, int Wiek) {
                 PracownicyRow rowPracownicyRow = ((PracownicyRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ID,
+                        null,
                         Imie,
                         Nazwisko,
                         Wiek};
@@ -894,6 +896,8 @@ namespace WyposazenieDlaSilowni {
                 base.Columns.Add(this.columnWiek);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = 1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
                 this.columnImie.AllowDBNull = false;
@@ -1143,10 +1147,10 @@ namespace WyposazenieDlaSilowni {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ProduktyRow AddProduktyRow(int ID, string Nazwa, decimal Cena, short WagaKG) {
+            public ProduktyRow AddProduktyRow(string Nazwa, decimal Cena, short WagaKG) {
                 ProduktyRow rowProduktyRow = ((ProduktyRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ID,
+                        null,
                         Nazwa,
                         Cena,
                         WagaKG};
@@ -1198,6 +1202,8 @@ namespace WyposazenieDlaSilowni {
                 base.Columns.Add(this.columnWagaKG);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = 1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
                 this.columnNazwa.AllowDBNull = false;
@@ -1447,10 +1453,10 @@ namespace WyposazenieDlaSilowni {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ZamowieniaRow AddZamowieniaRow(int ID, ProduktyRow parentProduktyRowByFK_Zamowienia_Produkty, System.DateTime DataZlozeniaZamowienia, KlienciRow parentKlienciRowByFK_Zamowienia_Klienci) {
+            public ZamowieniaRow AddZamowieniaRow(ProduktyRow parentProduktyRowByFK_Zamowienia_Produkty, System.DateTime DataZlozeniaZamowienia, KlienciRow parentKlienciRowByFK_Zamowienia_Klienci) {
                 ZamowieniaRow rowZamowieniaRow = ((ZamowieniaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ID,
+                        null,
                         null,
                         DataZlozeniaZamowienia,
                         null};
@@ -1508,6 +1514,8 @@ namespace WyposazenieDlaSilowni {
                 base.Columns.Add(this.columnKlient);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = 1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
                 this.columnProdukt.AllowDBNull = false;
