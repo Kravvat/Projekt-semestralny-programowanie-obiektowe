@@ -80,14 +80,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Klienci.xaml.cs">
+      <DependentUpon>Klienci.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LoginScreen.xaml.cs">
       <DependentUpon>LoginScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Wyposazenie_dla_silowni_DataSet.Designer.cs">
+    <Compile Include="Pracownicy.xaml.cs">
+      <DependentUpon>Pracownicy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Produkty.xaml.cs">
+      <DependentUpon>Produkty.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Wyposazenie_dla_silowniDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Wyposazenie_dla_silowni_DataSet.xsd</DependentUpon>
+      <DependentUpon>Wyposazenie_dla_silowniDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Zamowienia.xaml.cs">
+      <DependentUpon>Zamowienia.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Klienci.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -104,6 +120,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pracownicy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Produkty.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Zamowienia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -128,16 +156,16 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Wyposazenie_dla_silowni_DataSet.xsc">
-      <DependentUpon>Wyposazenie_dla_silowni_DataSet.xsd</DependentUpon>
+    <None Include="Wyposazenie_dla_silowniDataSet.xsc">
+      <DependentUpon>Wyposazenie_dla_silowniDataSet.xsd</DependentUpon>
     </None>
-    <None Include="Wyposazenie_dla_silowni_DataSet.xsd">
+    <None Include="Wyposazenie_dla_silowniDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Wyposazenie_dla_silowni_DataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>Wyposazenie_dla_silowniDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Wyposazenie_dla_silowni_DataSet.xss">
-      <DependentUpon>Wyposazenie_dla_silowni_DataSet.xsd</DependentUpon>
+    <None Include="Wyposazenie_dla_silowniDataSet.xss">
+      <DependentUpon>Wyposazenie_dla_silowniDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +191,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

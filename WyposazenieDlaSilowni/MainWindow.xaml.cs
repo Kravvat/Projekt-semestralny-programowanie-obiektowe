@@ -25,20 +25,39 @@ namespace WyposazenieDlaSilowni
             InitializeComponent();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Pracownicy_Button_Click(object sender, RoutedEventArgs e)
         {
-
-            WyposazenieDlaSilowni.Wyposazenie_dla_silowni_DataSet wyposazenie_dla_silowni_DataSet = ((WyposazenieDlaSilowni.Wyposazenie_dla_silowni_DataSet)(this.FindResource("wyposazenie_dla_silowni_DataSet")));
-            // Load data into the table Klienci. You can modify this code as needed.
-            WyposazenieDlaSilowni.Wyposazenie_dla_silowni_DataSetTableAdapters.KlienciTableAdapter wyposazenie_dla_silowni_DataSetKlienciTableAdapter = new WyposazenieDlaSilowni.Wyposazenie_dla_silowni_DataSetTableAdapters.KlienciTableAdapter();
-            wyposazenie_dla_silowni_DataSetKlienciTableAdapter.Fill(wyposazenie_dla_silowni_DataSet.Klienci);
-            System.Windows.Data.CollectionViewSource klienciViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("klienciViewSource")));
-            klienciViewSource.View.MoveCurrentToFirst();
+            Pracownicy pracownicy = new Pracownicy();
+            pracownicy.Show();
+            this.Close();
         }
 
-        private void klienciDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Klienci_Button_Click(object sender, RoutedEventArgs e)
         {
+            Klienci klienci = new Klienci();
+            klienci.Show();
+            this.Close();
+        }
 
+        private void Produkty_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Produkty produkty = new Produkty();
+            produkty.Show();
+            this.Close();
+        }
+
+        private void Zamowienia_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Zamowienia zamowienia = new Zamowienia();
+            zamowienia.Show();
+            this.Close();
+        }
+
+        private void Wyloguj_Button_Click(object sender, RoutedEventArgs e)
+        {
+            LoginScreen wyloguj = new LoginScreen();
+            wyloguj.Show();
+            this.Close();
         }
     }
 }

@@ -3,15 +3,24 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WyposazenieDlaSilowni"
         mc:Ignorable="d"
         Title="Wyposazenie dla silowni" Height="600" Width="800" FontSize="14" Background="DarkCyan" WindowStartupLocation="CenterScreen">
-    <Window.Resources>
-        <local:Wyposazenie_dla_silowni_DataSet x:Key="wyposazenie_dla_silowni_DataSet"/>
-        <CollectionViewSource x:Key="klienciViewSource" Source="{Binding Klienci, Source={StaticResource wyposazenie_dla_silowni_DataSet}}"/>
-    </Window.Resources>
+  
+    <Border Background="#2e3137" CornerRadius="20" Margin="20">
+        <StackPanel Margin="20">
+            <Label Content="PANEL GLOWNY" FontStyle="Italic" FontWeight="Bold" Foreground="White" FontSize="44" HorizontalAlignment="Center"/>
+            <Button Name="Pracownicy_Button" Click="Pracownicy_Button_Click" Content="Pracownicy" Margin="100 10" Background="#545d6a" 
+                    Foreground="White" FontSize="44"/>
+            <Button x:Name="Klienci_Button" Click="Klienci_Button_Click" Content="Klienci" Margin="100 10" Background="#545d6a" 
+                Foreground="White" FontSize="44"/>
+            <Button x:Name="Produkty_Button" Click="Produkty_Button_Click" Content="Produkty" Margin="100 10" Background="#545d6a" 
+                Foreground="White" FontSize="44"/>
+            <Button x:Name="Zamowienia_Button" Click="Zamowienia_Button_Click" Content="Zamowienia" Margin="100 10" Background="#545d6a" 
+                Foreground="White" FontSize="44"/>
+            <Button x:Name="Wyloguj_Button" Click="Wyloguj_Button_Click" Content="Wyloguj" Margin="100 10" Background="#545d6a" 
+                Foreground="White" FontSize="44"/>
 
-    <Grid>
-        <Label Content="Strona Glowna"/>
-    </Grid>
+        </StackPanel>
+        
+    </Border>
 </Window>

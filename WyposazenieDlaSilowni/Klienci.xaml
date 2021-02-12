@@ -1,0 +1,25 @@
+﻿<Window x:Class="WyposazenieDlaSilowni.Klienci"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WyposazenieDlaSilowni"
+        mc:Ignorable="d"
+        Title="Klienci" Height="600" Width="800" FontSize="14" Background="DarkCyan" WindowStartupLocation="CenterScreen">
+    <Border Background="#2e3137" CornerRadius="20" Margin="20">
+        <StackPanel Margin="20">
+            <Label Content="DODAJ KLIENTA" FontStyle="Italic" FontWeight="Bold" Foreground="White" FontSize="26" HorizontalAlignment="Center"/>
+            <Separator></Separator>
+            <Label Content="Imie" VerticalAlignment="Stretch"  FontSize="20" VerticalContentAlignment="Center" Foreground="White" Margin="200,4,200,0"/>
+            <TextBox Name="Imie_KlientDodaj_Box" VerticalAlignment="Stretch" VerticalContentAlignment="Center" Background="#545d6a" Foreground="White" FontSize="18"
+                     Margin="200,0,200,0"/>
+            <Label Content="Nazwisko" Margin="200,4,200,0" FontSize="20" Foreground="White"/>
+            <TextBox Name="Nazwisko_KlientDodaj_Box" Background="#545d6a" Foreground="White" FontSize="20" Margin="200,0,200,0" RenderTransformOrigin="1.426,0.349"/>
+            <Label Content="Miasto" VerticalAlignment="Stretch"  FontSize="20" VerticalContentAlignment="Center" Foreground="White" Margin="200,4,200,0"/>
+            <TextBox  Name="Miasto_KlientDodaj_Box" Background="#545d6a" Foreground="White" FontSize="20" Margin="200,0,200,0"/>
+            <Label Content="ID Obslugujacego Pracownika" VerticalAlignment="Stretch"  FontSize="20" VerticalContentAlignment="Center" Foreground="White" Margin="200,4,200,0"/>
+            <TextBox  Name="ObslugujacyPracownik_KlientDodaj_Box" Background="#545d6a" Foreground="White" FontSize="20" Margin="200,0,200,0"/>
+            <Button Name="DodajKlienta_Button" Click="DodajKlienta_Button_Click" Content="DODAJ" FontStyle="Italic" Margin="200,20,200,0" Background="#545d6a" Foreground="White" FontSize="18"/>
+        </StackPanel>
+    </Border>
+</Window>

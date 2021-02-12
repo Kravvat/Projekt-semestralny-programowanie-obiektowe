@@ -1,0 +1,23 @@
+﻿<Window x:Class="WyposazenieDlaSilowni.Produkty"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WyposazenieDlaSilowni"
+        mc:Ignorable="d"
+        Title="Produkty" Height="600" Width="800" FontSize="14" Background="DarkCyan" WindowStartupLocation="CenterScreen">
+    <Border Background="#2e3137" CornerRadius="20" Margin="20">
+        <StackPanel Margin="20">
+            <Label Content="DODAJ PRODUKT" FontStyle="Italic" FontWeight="Bold" Foreground="White" FontSize="26" HorizontalAlignment="Center"/>
+            <Separator></Separator>
+            <Label Content="Nazwa" VerticalAlignment="Stretch"  FontSize="20" VerticalContentAlignment="Center" Foreground="White" Margin="200,4,200,0"/>
+            <TextBox Name="Nazwa_ProduktDodaj_Box" VerticalAlignment="Stretch" VerticalContentAlignment="Center" Background="#545d6a" Foreground="White" FontSize="18"
+                     Margin="200,0,200,0"/>
+            <Label Content="Cena" Margin="200,4,200,0" FontSize="20" Foreground="White"/>
+            <TextBox Name="Cena_ProduktDodaj_Box" Background="#545d6a" Foreground="White" FontSize="20" Margin="200,0,200,0" RenderTransformOrigin="1.426,0.349"/>
+            <Label Content="Waga w KG" VerticalAlignment="Stretch"  FontSize="20" VerticalContentAlignment="Center" Foreground="White" Margin="200,4,200,0"/>
+            <TextBox  Name="Waga_ProduktDodaj_Box" Background="#545d6a" Foreground="White" FontSize="20" Margin="200,0,200,0"/>
+            <Button Name="DodajProdukt_Button" Click="DodajProdukt_Button_Click" Content="DODAJ" FontStyle="Italic" Margin="200,20,200,0" Background="#545d6a" Foreground="White" FontSize="18"/>
+        </StackPanel>
+    </Border>
+</Window>
