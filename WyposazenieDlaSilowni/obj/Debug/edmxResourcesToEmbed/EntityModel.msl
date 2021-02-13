@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Wyposazenie_dla_silowniModelStoreContainer" CdmEntityContainer="Wyposazenie_dla_silowniEntities">
+    <EntitySetMapping Name="DaneLogins">
+      <EntityTypeMapping TypeName="Wyposazenie_dla_silowniModel.DaneLogin">
+        <MappingFragment StoreEntitySet="DaneLogin">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NazwaUzytkownika" ColumnName="NazwaUzytkownika" />
+          <ScalarProperty Name="Haslo" ColumnName="Haslo" />
+          <ScalarProperty Name="Pracownik" ColumnName="Pracownik" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kliencis">
+      <EntityTypeMapping TypeName="Wyposazenie_dla_silowniModel.Klienci">
+        <MappingFragment StoreEntitySet="Klienci">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Imie" ColumnName="Imie" />
+          <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+          <ScalarProperty Name="Miasto" ColumnName="Miasto" />
+          <ScalarProperty Name="ObslugujacyPracownik" ColumnName="ObslugujacyPracownik" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pracownicies">
+      <EntityTypeMapping TypeName="Wyposazenie_dla_silowniModel.Pracownicy">
+        <MappingFragment StoreEntitySet="Pracownicy">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Imie" ColumnName="Imie" />
+          <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+          <ScalarProperty Name="Wiek" ColumnName="Wiek" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Produkties">
+      <EntityTypeMapping TypeName="Wyposazenie_dla_silowniModel.Produkty">
+        <MappingFragment StoreEntitySet="Produkty">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+          <ScalarProperty Name="Cena" ColumnName="Cena" />
+          <ScalarProperty Name="WagaKG" ColumnName="WagaKG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Wyposazenie_dla_silowniModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zamowienias">
+      <EntityTypeMapping TypeName="Wyposazenie_dla_silowniModel.Zamowienia">
+        <MappingFragment StoreEntitySet="Zamowienia">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Produkt" ColumnName="Produkt" />
+          <ScalarProperty Name="DataZlozeniaZamowienia" ColumnName="DataZlozeniaZamowienia" />
+          <ScalarProperty Name="Klient" ColumnName="Klient" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

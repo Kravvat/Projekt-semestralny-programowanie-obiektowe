@@ -27,28 +27,28 @@ namespace WyposazenieDlaSilowni
 
         private void Pracownicy_Button_Click(object sender, RoutedEventArgs e)
         {
-            Pracownicy pracownicy = new Pracownicy();
+            PracownicyWindow pracownicy = new PracownicyWindow();
             pracownicy.Show();
             this.Close();
         }
 
         private void Klienci_Button_Click(object sender, RoutedEventArgs e)
         {
-            Klienci klienci = new Klienci();
+            KlienciWindow klienci = new KlienciWindow();
             klienci.Show();
             this.Close();
         }
 
         private void Produkty_Button_Click(object sender, RoutedEventArgs e)
         {
-            Produkty produkty = new Produkty();
+            ProduktyWindow produkty = new ProduktyWindow();
             produkty.Show();
             this.Close();
         }
 
         private void Zamowienia_Button_Click(object sender, RoutedEventArgs e)
         {
-            Zamowienia zamowienia = new Zamowienia();
+            ZamowieniaWindow zamowienia = new ZamowieniaWindow();
             zamowienia.Show();
             this.Close();
         }

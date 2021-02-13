@@ -24,62 +24,37 @@ namespace WyposazenieDlaSilowni
         public LoginScreen()
         {
             InitializeComponent();
+            this.PreviewKeyDown += new KeyEventHandler(HandleEnter);
         }
-
+        private void HandleEnter(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                TryLogin();
+            }          
+        }
         private void Zaloguj_Button_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection sqlCon = new SqlConnection(@"Data Source=localhost\SQLEXPRESS; Initial Catalog=Wyposazenie dla silowni; Integrated Security=True;");
-            try
-            {
-                if (sqlCon.State == ConnectionState.Closed)
-                {
-                    sqlCon.Open();
-                    String query = "SELECT COUNT(1) FROM DaneLogin WHERE NazwaUzytkownika=@NazwaUzytkownika AND Haslo=@Haslo";
-                    SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-                    sqlCmd.CommandType = CommandType.Text;
-                    sqlCmd.Parameters.AddWithValue("@NazwaUzytkownika", NazwaUzytkownika_Box.Text);
-                    sqlCmd.Parameters.AddWithValue("@Haslo", Haslo_PasswordBox.Password);
-                    int count = Convert.ToInt32(sqlCmd.ExecuteScalar());
-                    if (count == 1)
-                    {
-                        MainWindow dasboard = new MainWindow();
-                        dasboard.Show();
-                        this.Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Podane dane sa bledne");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                sqlCon.Close();
-            }
+            TryLogin();
         }
 
-        /*private void Zaloguj_Button_Click(object sender, RoutedEventArgs e)
-          {
-              Wyposazenie_dla_silowniDataSet baza = new Wyposazenie_dla_silowniDataSet();
-              string login = NazwaUzytkownika_Box.Text;
-              string haslo = Haslo_PasswordBox.Password;
+        private void TryLogin()
+        {
+            Wyposazenie_dla_silowniBAZA baza = new Wyposazenie_dla_silowniBAZA();
+            string login = NazwaUzytkownika_Box.Text;
+            string haslo = Haslo_PasswordBox.Password;
 
-              var uzytkownik = baza.DaneLogin.SingleOrDefault(x => x.NazwaUzytkownika == login && x.Haslo == haslo);
-              if (uzytkownik != null)
-              {
-                  MainWindow dashboard = new MainWindow();
-                  dashboard.Show();
-                  this.Close();
-              }
-              else
-              {
-                  MessageBox.Show("Bledne Dane");
-              }
-          }
-        */
+            var uzytkownik = baza.DaneLogins.SingleOrDefault(x => x.NazwaUzytkownika == login && x.Haslo == haslo);
+            if (uzytkownik != null)
+            {
+                MainWindow dashboard = new MainWindow();
+                dashboard.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Wprowadzone dane sa bledne. Sprobuj ponownie");
+            }
+        }       
     }
 }

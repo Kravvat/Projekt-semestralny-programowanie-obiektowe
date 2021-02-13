@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Wyposazenie dla silowni" Height="600" Width="800" FontSize="14" Background="DarkCyan" WindowStartupLocation="CenterScreen">
+        ResizeMode="NoResize"
+        Title="Gorillaz Gym Equipment" Height="600" Width="800" FontSize="14" Background="DarkCyan" WindowStartupLocation="CenterScreen" Icon="gorilla.ico">
   
     <Border Background="#2e3137" CornerRadius="20" Margin="20">
         <StackPanel Margin="20">
