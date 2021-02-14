@@ -49,9 +49,14 @@ namespace WyposazenieDlaSilowni
 
         private void DodajPracownika_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (Imie_PracownikDodaj_Box.Text == String.Empty || Nazwisko_PracownikDodaj_Box.Text == String.Empty || Wiek_PracownikDodaj_Box.Text == String.Empty)
+            {
+                MessageBox.Show("Dodanie niepelnego rekordu jest niemozliwe", "UWAGA");
+            }
+            else
             {
                 Pracownicy nowyPracownik = new Pracownicy()
-                {          
+                {
                     Imie = Imie_PracownikDodaj_Box.Text,
                     Nazwisko = Nazwisko_PracownikDodaj_Box.Text,
                     Wiek = int.Parse(Wiek_PracownikDodaj_Box.Text)

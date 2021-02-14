@@ -44,6 +44,12 @@ namespace WyposazenieDlaSilowni
         }
         private void DodajProdukt_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (Nazwa_ProduktDodaj_Box.Text == String.Empty || Cena_ProduktDodaj_Box.Text == String.Empty || 
+                Waga_ProduktDodaj_Box.Text == String.Empty)
+            {
+                MessageBox.Show("Dodanie niepelnego rekordu jest niemozliwe", "UWAGA");
+            }
+            else
             {
                 Produkty nowyProdukt = new Produkty()
                 {
@@ -59,6 +65,7 @@ namespace WyposazenieDlaSilowni
                 Cena_ProduktDodaj_Box.Text = String.Empty;
                 Waga_ProduktDodaj_Box.Text = String.Empty;
             }
+            
         }
 
         private void OdswiezProdukty_Button_Click(object sender, RoutedEventArgs e)

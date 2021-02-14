@@ -43,7 +43,12 @@ namespace WyposazenieDlaSilowni
             this.Close();
         }
         private void DodajKlienta_Button_Click(object sender, RoutedEventArgs e)
-        {          
+        {
+            if (Imie_KlientDodaj_Box.Text == String.Empty || Nazwisko_KlientDodaj_Box.Text == String.Empty || Miasto_KlientDodaj_Box.Text == String.Empty || ObslugujacyPracownik_KlientDodaj_Box.Text == String.Empty)
+            {
+                MessageBox.Show("Dodanie niepelnego rekordu jest niemozliwe","UWAGA");
+            }
+            else
             {
                 Klienci nowyKlient = new Klienci()
                 {

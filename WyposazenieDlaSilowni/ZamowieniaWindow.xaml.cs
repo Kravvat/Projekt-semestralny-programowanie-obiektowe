@@ -44,6 +44,12 @@ namespace WyposazenieDlaSilowni
         }
         private void DodajZamowienie_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (Produkt_ZamowienieDodaj_Box.Text == String.Empty || Data_ZamowienieDodaj_Box.Text == String.Empty ||
+                Klient_ZamowienieDodaj_Box.Text == String.Empty)
+            {
+                MessageBox.Show("Dodanie niepelnego rekordu jest niemozliwe", "UWAGA");
+            }
+            else
             {
                 Zamowienia noweZamowienie = new Zamowienia()
                 {
@@ -58,7 +64,6 @@ namespace WyposazenieDlaSilowni
                 Produkt_ZamowienieDodaj_Box.Text = String.Empty;
                 Data_ZamowienieDodaj_Box.Text = String.Empty;
                 Klient_ZamowienieDodaj_Box.Text = String.Empty;
-
             }
         }
 
