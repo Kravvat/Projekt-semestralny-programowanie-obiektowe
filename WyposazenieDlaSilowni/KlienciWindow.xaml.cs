@@ -19,23 +19,31 @@ namespace WyposazenieDlaSilowni
     /// </summary>
     public partial class KlienciWindow : Window
     {
+        Wyposazenie_dla_silowniBAZA baza = new Wyposazenie_dla_silowniBAZA();
         public KlienciWindow()
         {
             InitializeComponent();
             this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
+            loadgrid();
+        }
+        private void loadgrid()
+        {
+            var data = from r in baza.Kliencis select r;
+            klienciDataGrid.ItemsSource = data.ToList();
         }
         private void HandleEsc(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
-            this.Hide();
-            MainWindow main = new MainWindow();
-            main.Show();
-            KlienciWindow klienci = new KlienciWindow();
-            klienci.Close();
+                MainMenu();
+        }
+        private void MainMenu()
+        {
+            MainWindow dashboard = new MainWindow();
+            dashboard.Show();
+            this.Close();
         }
         private void DodajKlienta_Button_Click(object sender, RoutedEventArgs e)
-        {
-            Wyposazenie_dla_silowniBAZA baza = new Wyposazenie_dla_silowniBAZA();
+        {          
             {
                 Klienci nowyKlient = new Klienci()
                 {
@@ -48,16 +56,23 @@ namespace WyposazenieDlaSilowni
                 baza.Kliencis.Add(nowyKlient);
                 baza.SaveChanges();
                 MessageBox.Show("Pomyslnie dodano rekord do tabeli. Odswiez w celu podgladu");
+                Imie_KlientDodaj_Box.Text = String.Empty;
+                Nazwisko_KlientDodaj_Box.Text = String.Empty;
+                Miasto_KlientDodaj_Box.Text = String.Empty;
+                ObslugujacyPracownik_KlientDodaj_Box.Text = String.Empty;
             }
         }
         private void OdswiezKlientow_Button_Click(object sender, RoutedEventArgs e)
         {
-            Wyposazenie_dla_silowniBAZA baza = new Wyposazenie_dla_silowniBAZA();
             this.klienciDataGrid.ItemsSource = baza.Kliencis.ToList();
         }
         private void UsunKlienta_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            int KlientID = (klienciDataGrid.SelectedItem as Klienci).ID;
+            Klienci Klient = (from r in baza.Kliencis where r.ID == KlientID select r).SingleOrDefault();
+            baza.Kliencis.Remove(Klient);
+            baza.SaveChanges();
+            MessageBox.Show("Pomyslnie usunieto rekord z tabeli. Odswiez w celu podgladu");
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

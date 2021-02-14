@@ -19,23 +19,31 @@ namespace WyposazenieDlaSilowni
     /// </summary>
     public partial class ProduktyWindow : Window
     {
+        Wyposazenie_dla_silowniBAZA baza = new Wyposazenie_dla_silowniBAZA();
         public ProduktyWindow()
         {
             InitializeComponent();
             this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
+            loadgrid();
+        }
+        private void loadgrid()
+        {
+            var data = from r in baza.Produkties select r;
+            produktyDataGrid.ItemsSource = data.ToList();
         }
         private void HandleEsc(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
-                this.Hide();
-            MainWindow main = new MainWindow();
-            main.Show();
-            ProduktyWindow produkty = new ProduktyWindow();
-            produkty.Close();
+                MainMenu();
+        }
+        private void MainMenu()
+        {
+            MainWindow dashboard = new MainWindow();
+            dashboard.Show();
+            this.Close();
         }
         private void DodajProdukt_Button_Click(object sender, RoutedEventArgs e)
         {
-            Wyposazenie_dla_silowniBAZA baza = new Wyposazenie_dla_silowniBAZA();
             {
                 Produkty nowyProdukt = new Produkty()
                 {
@@ -47,19 +55,24 @@ namespace WyposazenieDlaSilowni
                 baza.Produkties.Add(nowyProdukt);
                 baza.SaveChanges();
                 MessageBox.Show("Pomyslnie dodano rekord do tabeli. Odswiez w celu podgladu");
+                Nazwa_ProduktDodaj_Box.Text = String.Empty;
+                Cena_ProduktDodaj_Box.Text = String.Empty;
+                Waga_ProduktDodaj_Box.Text = String.Empty;
             }
         }
 
         private void OdswiezProdukty_Button_Click(object sender, RoutedEventArgs e)
         {
-
-            Wyposazenie_dla_silowniBAZA baza = new Wyposazenie_dla_silowniBAZA();
             this.produktyDataGrid.ItemsSource = baza.Produkties.ToList();
         }
 
         private void UsunProdukt_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            int ProduktID = (produktyDataGrid.SelectedItem as Produkty).ID;
+            Produkty Produkt = (from r in baza.Produkties where r.ID == ProduktID select r).SingleOrDefault();
+            baza.Produkties.Remove(Produkt);
+            baza.SaveChanges();
+            MessageBox.Show("Pomyslnie usunieto rekord z tabeli. Odswiez w celu podgladu");
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

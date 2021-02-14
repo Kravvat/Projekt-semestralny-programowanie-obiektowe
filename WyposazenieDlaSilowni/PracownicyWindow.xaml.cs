@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,24 +20,35 @@ namespace WyposazenieDlaSilowni
     /// </summary>
     public partial class PracownicyWindow : Window
     {
+        Wyposazenie_dla_silowniBAZA baza = new Wyposazenie_dla_silowniBAZA();
         public PracownicyWindow()
         {
             InitializeComponent();
             this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
+            loadgrid();
         }
+
+        private void loadgrid()
+        {
+            var data = from r in baza.Pracownicies select r;
+            pracownicyDataGrid.ItemsSource = data.ToList();
+        }
+
         private void HandleEsc(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
-            this.Hide();
-            MainWindow main = new MainWindow();
-            main.Show();
-            PracownicyWindow pracownicy = new PracownicyWindow();
-            pracownicy.Close();
+                MainMenu();
+        }
+
+        private void MainMenu()
+        {
+            MainWindow dashboard = new MainWindow();
+            dashboard.Show();
+            this.Close();
         }
 
         private void DodajPracownika_Button_Click(object sender, RoutedEventArgs e)
         {
-            Wyposazenie_dla_silowniBAZA baza = new Wyposazenie_dla_silowniBAZA();
             {
                 Pracownicy nowyPracownik = new Pracownicy()
                 {          
@@ -48,16 +60,22 @@ namespace WyposazenieDlaSilowni
                 baza.Pracownicies.Add(nowyPracownik);
                 baza.SaveChanges();
                 MessageBox.Show("Pomyslnie dodano rekord do tabeli. Odswiez w celu podgladu");
+                Imie_PracownikDodaj_Box.Text = String.Empty;
+                Nazwisko_PracownikDodaj_Box.Text = String.Empty;
+                Wiek_PracownikDodaj_Box.Text = String.Empty;
             }
         }
         private void OdswiezPracownikow_Button_Click(object sender, RoutedEventArgs e)
-        {
-            Wyposazenie_dla_silowniBAZA baza = new Wyposazenie_dla_silowniBAZA();
+        {           
             this.pracownicyDataGrid.ItemsSource = baza.Pracownicies.ToList();
         }
         private void UsunPracownika_Button_Click(object sender, RoutedEventArgs e)
         {
-            
+            int PracownikID = (pracownicyDataGrid.SelectedItem as Pracownicy).ID;
+            Pracownicy Pracownik = (from r in baza.Pracownicies where r.ID == PracownikID select r).SingleOrDefault();
+            baza.Pracownicies.Remove(Pracownik);
+            baza.SaveChanges();
+            MessageBox.Show("Pomyslnie usunieto rekord z tabeli. Odswiez w celu podgladu");
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

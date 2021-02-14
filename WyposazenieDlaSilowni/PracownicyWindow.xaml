@@ -25,13 +25,19 @@
             <TextBox  Name="Wiek_PracownikDodaj_Box" Background="#545d6a" Foreground="White" FontSize="20" Margin="200,0,200,0"/>
             <Button Name="DodajPracownika_Button" Click="DodajPracownika_Button_Click" Content="DODAJ" FontStyle="Italic" Margin="200,20,200,0" Background="#545d6a" Foreground="White" FontSize="18"/>
             <Button x:Name="OdswiezPracownikow_Button" Click="OdswiezPracownikow_Button_Click" Content="ODSWIEZ" FontStyle="Italic" Background="#433" Foreground="White" FontSize="18" Margin="200,4,200,0" RenderTransformOrigin="1.629,-7.082"/>
-            <Button Name="UsunPracownika_Button" Click="UsunPracownika_Button_Click" Content="USUN" FontStyle="Italic" Background="#545" Foreground="White" FontSize="18" Margin="200,4,200,0" RenderTransformOrigin="1.367,0.929"/>
-            <DataGrid x:Name="pracownicyDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" Height="139" ItemsSource="{Binding}" Margin="200,0" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid x:Name="pracownicyDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" Height="161" ItemsSource="{Binding}" Margin="200,0,169,0" RowDetailsVisibilityMode="VisibleWhenSelected">
                 <DataGrid.Columns>
                     <DataGridTextColumn x:Name="iDColumn" Binding="{Binding ID}" Header="ID" IsReadOnly="True" Width="SizeToHeader"/>
-                    <DataGridTextColumn x:Name="imieColumn" Binding="{Binding Imie}" Header="Imie" Width="109"/>
+                    <DataGridTextColumn x:Name="imieColumn" Binding="{Binding Imie}" Header="Imie" Width="90"/>
                     <DataGridTextColumn x:Name="nazwiskoColumn" Binding="{Binding Nazwisko}" Header="Nazwisko" Width="108"/>
                     <DataGridTextColumn x:Name="wiekColumn" Binding="{Binding Wiek}" Header="Wiek" Width="SizeToHeader"/>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="USUN" Click="UsunPracownika_Button_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
             

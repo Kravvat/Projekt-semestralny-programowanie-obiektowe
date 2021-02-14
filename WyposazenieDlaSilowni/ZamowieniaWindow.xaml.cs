@@ -19,23 +19,31 @@ namespace WyposazenieDlaSilowni
     /// </summary>
     public partial class ZamowieniaWindow : Window
     {
+        Wyposazenie_dla_silowniBAZA baza = new Wyposazenie_dla_silowniBAZA();
         public ZamowieniaWindow()
         {
             InitializeComponent();
             this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
+            loadgrid();
+        }
+        private void loadgrid()
+        {
+            var data = from r in baza.Zamowienias select r;
+            zamowieniaDataGrid.ItemsSource = data.ToList();
         }
         private void HandleEsc(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
-                this.Hide();
-            MainWindow main = new MainWindow();
-            main.Show();
-            ZamowieniaWindow zamowienia = new ZamowieniaWindow();
-            zamowienia.Close();
+                MainMenu();
+        }
+        private void MainMenu()
+        {
+            MainWindow dashboard = new MainWindow();
+            dashboard.Show();
+            this.Close();
         }
         private void DodajZamowienie_Button_Click(object sender, RoutedEventArgs e)
         {
-            Wyposazenie_dla_silowniBAZA baza = new Wyposazenie_dla_silowniBAZA();
             {
                 Zamowienia noweZamowienie = new Zamowienia()
                 {
@@ -47,18 +55,25 @@ namespace WyposazenieDlaSilowni
                 baza.Zamowienias.Add(noweZamowienie);
                 baza.SaveChanges();
                 MessageBox.Show("Pomyslnie dodano rekord do tabeli. Odswiez w celu podgladu");
+                Produkt_ZamowienieDodaj_Box.Text = String.Empty;
+                Data_ZamowienieDodaj_Box.Text = String.Empty;
+                Klient_ZamowienieDodaj_Box.Text = String.Empty;
+
             }
         }
 
         private void OdswiezZamowienia_Button_Click(object sender, RoutedEventArgs e)
         {
-            Wyposazenie_dla_silowniBAZA baza = new Wyposazenie_dla_silowniBAZA();
             this.zamowieniaDataGrid.ItemsSource = baza.Zamowienias.ToList();
         }
 
         private void UsunZamowienie_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            int ZamowienieID = (zamowieniaDataGrid.SelectedItem as Zamowienia).ID;
+            Zamowienia Zamowienie = (from r in baza.Zamowienias where r.ID == ZamowienieID select r).SingleOrDefault();
+            baza.Zamowienias.Remove(Zamowienie);
+            baza.SaveChanges();
+            MessageBox.Show("Pomyslnie usunieto rekord z tabeli. Odswiez w celu podgladu");
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
