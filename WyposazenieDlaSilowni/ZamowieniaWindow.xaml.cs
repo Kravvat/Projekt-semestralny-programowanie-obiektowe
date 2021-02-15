@@ -51,23 +51,32 @@ namespace WyposazenieDlaSilowni
             }
             else
             {
-                Zamowienia noweZamowienie = new Zamowienia()
+                try
                 {
-                    Produkt = int.Parse(Produkt_ZamowienieDodaj_Box.Text),
-                    DataZlozeniaZamowienia = DateTime.Parse(Data_ZamowienieDodaj_Box.Text),
-                    Klient = int.Parse(Klient_ZamowienieDodaj_Box.Text)
-                };
+                    Zamowienia noweZamowienie = new Zamowienia()
+                    {
+                        Produkt = int.Parse(Produkt_ZamowienieDodaj_Box.Text),
+                        DataZlozeniaZamowienia = DateTime.Parse(Data_ZamowienieDodaj_Box.Text),
+                        Klient = int.Parse(Klient_ZamowienieDodaj_Box.Text)
+                    };
 
-                baza.Zamowienias.Add(noweZamowienie);
-                baza.SaveChanges();
-                MessageBox.Show("Pomyslnie dodano rekord do tabeli. Odswiez w celu podgladu");
-                Produkt_ZamowienieDodaj_Box.Text = String.Empty;
-                Data_ZamowienieDodaj_Box.Text = String.Empty;
-                Klient_ZamowienieDodaj_Box.Text = String.Empty;
+                    baza.Zamowienias.Add(noweZamowienie);
+                    baza.SaveChanges();
+                    MessageBox.Show("Pomyslnie dodano rekord do tabeli. Odswiez w celu podgladu");
+                    Produkt_ZamowienieDodaj_Box.Text = String.Empty;
+                    Data_ZamowienieDodaj_Box.Text = String.Empty;
+                    Klient_ZamowienieDodaj_Box.Text = String.Empty;
+                }
+                catch (System.FormatException)
+                {
+                    MessageBox.Show("Proba wprowadzenia niewlasciwego typu danych !", "UWAGA");
+                    Produkt_ZamowienieDodaj_Box.Text = String.Empty;
+                    Data_ZamowienieDodaj_Box.Text = String.Empty;
+                    Klient_ZamowienieDodaj_Box.Text = String.Empty;
+                }              
             }
-        }
-
-        private void OdswiezZamowienia_Button_Click(object sender, RoutedEventArgs e)
+        }       
+    private void OdswiezZamowienia_Button_Click(object sender, RoutedEventArgs e)
         {
             this.zamowieniaDataGrid.ItemsSource = baza.Zamowienias.ToList();
         }

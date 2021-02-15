@@ -25,7 +25,7 @@
             <TextBox  Name="Waga_ProduktDodaj_Box" Background="#545d6a" Foreground="White" FontSize="20" Margin="200,0,200,0"/>
             <Button Name="DodajProdukt_Button" Click="DodajProdukt_Button_Click" Content="DODAJ" FontStyle="Italic" Margin="200,20,200,0" Background="#545d6a" Foreground="White" FontSize="18"/>
             <Button x:Name="OdswiezProdukty_Button" Click="OdswiezProdukty_Button_Click" Content="ODSWIEZ" FontStyle="Italic" Background="#433" Foreground="White" FontSize="18" Margin="200,4,200,0" RenderTransformOrigin="1.629,-7.082"/>
-            <DataGrid x:Name="produktyDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" Height="166" ItemsSource="{Binding}" Margin="200,0,187,0" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid x:Name="produktyDataGrid" CanUserAddRows="false" AutoGenerateColumns="False" EnableRowVirtualization="True" Height="166" ItemsSource="{Binding}" Margin="200,0,187,0" RowDetailsVisibilityMode="VisibleWhenSelected">
                 <DataGrid.Columns>
                     <DataGridTextColumn x:Name="iDColumn" Binding="{Binding ID}" Header="ID" IsReadOnly="True" Width="22"/>
                     <DataGridTextColumn x:Name="nazwaColumn" Binding="{Binding Nazwa}" Header="Nazwa" Width="140"/>

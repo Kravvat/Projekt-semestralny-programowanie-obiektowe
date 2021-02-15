@@ -51,19 +51,28 @@ namespace WyposazenieDlaSilowni
             }
             else
             {
-                Produkty nowyProdukt = new Produkty()
+                try
                 {
-                    Nazwa = Nazwa_ProduktDodaj_Box.Text,
-                    Cena = int.Parse(Cena_ProduktDodaj_Box.Text),
-                    WagaKG = int.Parse(Waga_ProduktDodaj_Box.Text)
-                };
+                    Produkty nowyProdukt = new Produkty()
+                    {
+                        Nazwa = Nazwa_ProduktDodaj_Box.Text,
+                        Cena = int.Parse(Cena_ProduktDodaj_Box.Text),
+                        WagaKG = int.Parse(Waga_ProduktDodaj_Box.Text)
+                    };
 
-                baza.Produkties.Add(nowyProdukt);
-                baza.SaveChanges();
-                MessageBox.Show("Pomyslnie dodano rekord do tabeli. Odswiez w celu podgladu");
-                Nazwa_ProduktDodaj_Box.Text = String.Empty;
-                Cena_ProduktDodaj_Box.Text = String.Empty;
-                Waga_ProduktDodaj_Box.Text = String.Empty;
+                    baza.Produkties.Add(nowyProdukt);
+                    baza.SaveChanges();
+                    MessageBox.Show("Pomyslnie dodano rekord do tabeli. Odswiez w celu podgladu");
+                    Nazwa_ProduktDodaj_Box.Text = String.Empty;
+                    Cena_ProduktDodaj_Box.Text = String.Empty;
+                    Waga_ProduktDodaj_Box.Text = String.Empty;
+                }
+                catch (System.FormatException)
+                {
+                    MessageBox.Show("Proba wprowadzenia niewlasciwego typu danych !", "UWAGA");
+                    Cena_ProduktDodaj_Box.Text = String.Empty;
+                    Waga_ProduktDodaj_Box.Text = String.Empty;
+                }
             }
             
         }

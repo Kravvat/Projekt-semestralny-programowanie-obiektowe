@@ -50,21 +50,29 @@ namespace WyposazenieDlaSilowni
             }
             else
             {
-                Klienci nowyKlient = new Klienci()
+                try
                 {
-                    Imie = Imie_KlientDodaj_Box.Text,
-                    Nazwisko = Nazwisko_KlientDodaj_Box.Text,
-                    Miasto = Miasto_KlientDodaj_Box.Text,
-                    ObslugujacyPracownik = int.Parse(ObslugujacyPracownik_KlientDodaj_Box.Text)
-                };
+                    Klienci nowyKlient = new Klienci()
+                    {
+                        Imie = Imie_KlientDodaj_Box.Text,
+                        Nazwisko = Nazwisko_KlientDodaj_Box.Text,
+                        Miasto = Miasto_KlientDodaj_Box.Text,
+                        ObslugujacyPracownik = int.Parse(ObslugujacyPracownik_KlientDodaj_Box.Text)
+                    };
 
-                baza.Kliencis.Add(nowyKlient);
-                baza.SaveChanges();
-                MessageBox.Show("Pomyslnie dodano rekord do tabeli. Odswiez w celu podgladu");
-                Imie_KlientDodaj_Box.Text = String.Empty;
-                Nazwisko_KlientDodaj_Box.Text = String.Empty;
-                Miasto_KlientDodaj_Box.Text = String.Empty;
-                ObslugujacyPracownik_KlientDodaj_Box.Text = String.Empty;
+                    baza.Kliencis.Add(nowyKlient);
+                    baza.SaveChanges();
+                    MessageBox.Show("Pomyslnie dodano rekord do tabeli. Odswiez w celu podgladu");
+                    Imie_KlientDodaj_Box.Text = String.Empty;
+                    Nazwisko_KlientDodaj_Box.Text = String.Empty;
+                    Miasto_KlientDodaj_Box.Text = String.Empty;
+                    ObslugujacyPracownik_KlientDodaj_Box.Text = String.Empty;
+                }
+                catch (System.FormatException)
+                {
+                    MessageBox.Show("Proba wprowadzenia niewlasciwego typu danych !", "UWAGA");
+                    ObslugujacyPracownik_KlientDodaj_Box.Text = String.Empty;
+                }
             }
         }
         private void OdswiezKlientow_Button_Click(object sender, RoutedEventArgs e)

@@ -55,19 +55,27 @@ namespace WyposazenieDlaSilowni
             }
             else
             {
-                Pracownicy nowyPracownik = new Pracownicy()
+                try
                 {
-                    Imie = Imie_PracownikDodaj_Box.Text,
-                    Nazwisko = Nazwisko_PracownikDodaj_Box.Text,
-                    Wiek = int.Parse(Wiek_PracownikDodaj_Box.Text)
-                };
+                    Pracownicy nowyPracownik = new Pracownicy()
+                    {
+                        Imie = Imie_PracownikDodaj_Box.Text,
+                        Nazwisko = Nazwisko_PracownikDodaj_Box.Text,
+                        Wiek = int.Parse(Wiek_PracownikDodaj_Box.Text)
+                    };
 
-                baza.Pracownicies.Add(nowyPracownik);
-                baza.SaveChanges();
-                MessageBox.Show("Pomyslnie dodano rekord do tabeli. Odswiez w celu podgladu");
-                Imie_PracownikDodaj_Box.Text = String.Empty;
-                Nazwisko_PracownikDodaj_Box.Text = String.Empty;
-                Wiek_PracownikDodaj_Box.Text = String.Empty;
+                    baza.Pracownicies.Add(nowyPracownik);
+                    baza.SaveChanges();
+                    MessageBox.Show("Pomyslnie dodano rekord do tabeli. Odswiez w celu podgladu");
+                    Imie_PracownikDodaj_Box.Text = String.Empty;
+                    Nazwisko_PracownikDodaj_Box.Text = String.Empty;
+                    Wiek_PracownikDodaj_Box.Text = String.Empty;
+                }
+                catch (System.FormatException)
+                {
+                    MessageBox.Show("Proba wprowadzenia niewlasciwego typu danych !", "UWAGA");
+                    Wiek_PracownikDodaj_Box.Text = String.Empty;
+                }              
             }
         }
         private void OdswiezPracownikow_Button_Click(object sender, RoutedEventArgs e)
