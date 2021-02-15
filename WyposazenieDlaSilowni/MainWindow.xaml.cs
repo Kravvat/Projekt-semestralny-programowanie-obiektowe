@@ -20,6 +20,9 @@ namespace WyposazenieDlaSilowni
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// Konstruktor klasy MainWindow
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();

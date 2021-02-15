@@ -21,6 +21,9 @@ namespace WyposazenieDlaSilowni
     /// </summary>
     public partial class LoginScreen : Window
     {
+        /// <summary>
+        /// Konstruktor klasy LoginScreen
+        /// </summary>
         public LoginScreen()
         {
             InitializeComponent();

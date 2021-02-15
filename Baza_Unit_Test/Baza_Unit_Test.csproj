@@ -60,20 +60,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DaneLogin.cs">
+      <DependentUpon>Model1_forUnitTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Klienci.cs">
+      <DependentUpon>Model1_forUnitTest.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model1_forUnitTest.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1_forUnitTest.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1_forUnitTest.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1_forUnitTest.tt</DependentUpon>
     </Compile>
     <Compile Include="Model1_forUnitTest.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1_forUnitTest.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Pracownicy.cs">
+      <DependentUpon>Model1_forUnitTest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Produkty.cs">
+      <DependentUpon>Model1_forUnitTest.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>Model1_forUnitTest.tt</DependentUpon>
     </Compile>
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,6 +101,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Wyposazenie_dla_silowniDataSet_forUnitTest.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Zamowienia.cs">
+      <DependentUpon>Model1_forUnitTest.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +142,12 @@
     <Content Include="Model1_forUnitTest.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1_forUnitTest.Context.cs</LastGenOutput>
+      <DependentUpon>Model1_forUnitTest.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model1_forUnitTest.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1_forUnitTest.edmx</DependentUpon>
+      <LastGenOutput>Model1_forUnitTest.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

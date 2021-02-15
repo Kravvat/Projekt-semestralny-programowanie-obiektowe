@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model_forUnitTest.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DaneLogin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NazwaUzytkownika" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Haslo" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Klienci">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Imie" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Nazwisko" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Miasto" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ObslugujacyPracownik" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pracownicy">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Imie" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Nazwisko" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Wiek" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Produkty">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nazwa" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cena" Type="int" Nullable="false" />
+    <Property Name="WagaKG" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Zamowienia">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Produkt" Type="int" Nullable="false" />
+    <Property Name="DataZlozeniaZamowienia" Type="date" Nullable="false" />
+    <Property Name="Klient" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Klienci_Pracownicy">
+    <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="1" />
+    <End Role="Klienci" Type="Self.Klienci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pracownicy">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Klienci">
+        <PropertyRef Name="ObslugujacyPracownik" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zamowienia_Klienci">
+    <End Role="Klienci" Type="Self.Klienci" Multiplicity="1" />
+    <End Role="Zamowienia" Type="Self.Zamowienia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klienci">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Zamowienia">
+        <PropertyRef Name="Klient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zamowienia_Produkty">
+    <End Role="Produkty" Type="Self.Produkty" Multiplicity="1" />
+    <End Role="Zamowienia" Type="Self.Zamowienia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produkty">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Zamowienia">
+        <PropertyRef Name="Produkt" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Model_forUnitTestStoreContainer">
+    <EntitySet Name="DaneLogin" EntityType="Self.DaneLogin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Klienci" EntityType="Self.Klienci" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pracownicy" EntityType="Self.Pracownicy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Produkty" EntityType="Self.Produkty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Zamowienia" EntityType="Self.Zamowienia" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Klienci_Pracownicy" Association="Self.FK_Klienci_Pracownicy">
+      <End Role="Pracownicy" EntitySet="Pracownicy" />
+      <End Role="Klienci" EntitySet="Klienci" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zamowienia_Klienci" Association="Self.FK_Zamowienia_Klienci">
+      <End Role="Klienci" EntitySet="Klienci" />
+      <End Role="Zamowienia" EntitySet="Zamowienia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zamowienia_Produkty" Association="Self.FK_Zamowienia_Produkty">
+      <End Role="Produkty" EntitySet="Produkty" />
+      <End Role="Zamowienia" EntitySet="Zamowienia" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

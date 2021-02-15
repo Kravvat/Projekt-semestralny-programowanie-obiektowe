@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model_forUnitTest" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DaneLogin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NazwaUzytkownika" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Haslo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Klienci">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Imie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Miasto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ObslugujacyPracownik" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Pracownicy" Relationship="Self.FK_Klienci_Pracownicy" FromRole="Klienci" ToRole="Pracownicy" />
+    <NavigationProperty Name="Zamowienias" Relationship="Self.FK_Zamowienia_Klienci" FromRole="Klienci" ToRole="Zamowienia" />
+  </EntityType>
+  <EntityType Name="Pracownicy">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Imie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Wiek" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Kliencis" Relationship="Self.FK_Klienci_Pracownicy" FromRole="Pracownicy" ToRole="Klienci" />
+  </EntityType>
+  <EntityType Name="Produkty">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cena" Type="Int32" Nullable="false" />
+    <Property Name="WagaKG" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Zamowienias" Relationship="Self.FK_Zamowienia_Produkty" FromRole="Produkty" ToRole="Zamowienia" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Zamowienia">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Produkt" Type="Int32" Nullable="false" />
+    <Property Name="DataZlozeniaZamowienia" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Klient" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Klienci" Relationship="Self.FK_Zamowienia_Klienci" FromRole="Zamowienia" ToRole="Klienci" />
+    <NavigationProperty Name="Produkty" Relationship="Self.FK_Zamowienia_Produkty" FromRole="Zamowienia" ToRole="Produkty" />
+  </EntityType>
+  <Association Name="FK_Klienci_Pracownicy">
+    <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="1" />
+    <End Role="Klienci" Type="Self.Klienci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pracownicy">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Klienci">
+        <PropertyRef Name="ObslugujacyPracownik" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zamowienia_Klienci">
+    <End Role="Klienci" Type="Self.Klienci" Multiplicity="1" />
+    <End Role="Zamowienia" Type="Self.Zamowienia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klienci">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Zamowienia">
+        <PropertyRef Name="Klient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zamowienia_Produkty">
+    <End Role="Produkty" Type="Self.Produkty" Multiplicity="1" />
+    <End Role="Zamowienia" Type="Self.Zamowienia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produkty">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Zamowienia">
+        <PropertyRef Name="Produkt" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Wyposazenie_dla_silowniEntities_forUnitTest" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DaneLogins" EntityType="Self.DaneLogin" />
+    <EntitySet Name="Kliencis" EntityType="Self.Klienci" />
+    <EntitySet Name="Pracownicies" EntityType="Self.Pracownicy" />
+    <EntitySet Name="Produkties" EntityType="Self.Produkty" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Zamowienias" EntityType="Self.Zamowienia" />
+    <AssociationSet Name="FK_Klienci_Pracownicy" Association="Self.FK_Klienci_Pracownicy">
+      <End Role="Pracownicy" EntitySet="Pracownicies" />
+      <End Role="Klienci" EntitySet="Kliencis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zamowienia_Klienci" Association="Self.FK_Zamowienia_Klienci">
+      <End Role="Klienci" EntitySet="Kliencis" />
+      <End Role="Zamowienia" EntitySet="Zamowienias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zamowienia_Produkty" Association="Self.FK_Zamowienia_Produkty">
+      <End Role="Produkty" EntitySet="Produkties" />
+      <End Role="Zamowienia" EntitySet="Zamowienias" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

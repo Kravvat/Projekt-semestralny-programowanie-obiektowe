@@ -20,6 +20,9 @@ namespace WyposazenieDlaSilowni
     public partial class ProduktyWindow : Window
     {
         Wyposazenie_dla_silowniBAZA baza = new Wyposazenie_dla_silowniBAZA();
+        /// <summary>
+        /// Konstruktor klasy ProduktyWindow
+        /// </summary>
         public ProduktyWindow()
         {
             InitializeComponent();
