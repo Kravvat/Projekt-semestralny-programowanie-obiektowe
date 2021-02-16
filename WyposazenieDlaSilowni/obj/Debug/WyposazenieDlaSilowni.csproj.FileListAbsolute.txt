@@ -5,7 +5,6 @@ H:\Dollar Maker\C#\Projekt-semestralny-programowanie-obiektowe\Projekt-semestral
 H:\Dollar Maker\C#\Projekt-semestralny-programowanie-obiektowe\Projekt-semestralny-programowanie-obiektowe\WyposazenieDlaSilowni\bin\Debug\EntityFramework.SqlServer.dll
 H:\Dollar Maker\C#\Projekt-semestralny-programowanie-obiektowe\Projekt-semestralny-programowanie-obiektowe\WyposazenieDlaSilowni\bin\Debug\EntityFramework.xml
 H:\Dollar Maker\C#\Projekt-semestralny-programowanie-obiektowe\Projekt-semestralny-programowanie-obiektowe\WyposazenieDlaSilowni\bin\Debug\EntityFramework.SqlServer.xml
-H:\Dollar Maker\C#\Projekt-semestralny-programowanie-obiektowe\Projekt-semestralny-programowanie-obiektowe\WyposazenieDlaSilowni\obj\Debug\WyposazenieDlaSilowni.csprojAssemblyReference.cache
 H:\Dollar Maker\C#\Projekt-semestralny-programowanie-obiektowe\Projekt-semestralny-programowanie-obiektowe\WyposazenieDlaSilowni\obj\Debug\MainWindow.g.cs
 H:\Dollar Maker\C#\Projekt-semestralny-programowanie-obiektowe\Projekt-semestralny-programowanie-obiektowe\WyposazenieDlaSilowni\obj\Debug\App.g.cs
 H:\Dollar Maker\C#\Projekt-semestralny-programowanie-obiektowe\Projekt-semestralny-programowanie-obiektowe\WyposazenieDlaSilowni\obj\Debug\WyposazenieDlaSilowni_MarkupCompile.cache
