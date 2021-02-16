@@ -1,0 +1,4 @@
+NazwaUzytkownika: kacper
+Haslo: 1234
+
+lub inne rekordy z tabeli dbo.DaneLogin
